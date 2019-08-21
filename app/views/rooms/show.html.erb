@@ -9,6 +9,7 @@
 <% end %><br>
 
 <% @room.messages.each do |m| %>
-    <%= m.content %>
+    <%= m.user.name %><br>
+    <%= m.content %><hr><br>    
 <% end %>
 

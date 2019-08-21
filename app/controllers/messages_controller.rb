@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
             message = room.messages.build(message_params)
             @user.messages << message
             room.save
-            binding.pry
             redirect_to room_path(room)
         else
             redirect_to rooms_path
