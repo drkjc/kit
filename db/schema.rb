@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_21_184135) do
+ActiveRecord::Schema.define(version: 2019_08_21_184009) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,13 +24,6 @@ ActiveRecord::Schema.define(version: 2019_08_21_184135) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "rooms_messages", force: :cascade do |t|
-    t.integer "message_id"
-    t.integer "room_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "rooms_users", force: :cascade do |t|

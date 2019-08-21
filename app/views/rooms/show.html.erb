@@ -3,8 +3,12 @@
 <%= link_to 'all rooms', rooms_path %><br>
 
 <%= form_for ([@room, @message]) do |f| %>
-    <%= f.label :content, 'Type here' %>
-    <%= f.text_field :content %>
-    <%= f.submit 'send' %>
+    <%= f.label :content, 'Type here' %><br>
+    <%= f.text_area :content %><br>
+    <%= f.submit 'send' %><br>
+<% end %><br>
+
+<% @room.messages.each do |m| %>
+    <%= m.content %>
 <% end %>
 
