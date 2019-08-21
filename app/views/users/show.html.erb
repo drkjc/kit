@@ -4,5 +4,5 @@
 <%= link_to "Direct Message", rooms_path %><hr><br>
 
 <% @user.rooms.each do |room| %>
-    <%= link_to room.name, user_room_path(room) %><hr><br>
+    <%= link_to room.name, room_path(room) %><hr><br>
 <% end %>
