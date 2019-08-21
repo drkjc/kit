@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController 
-
+    before_action :find_user 
+    
     def index
         @rooms = Room.all
         @room = Room.new
@@ -8,8 +9,14 @@ class RoomsController < ApplicationController
     def new; end 
 
     def create 
-        @room = Room.create(room_params)
-        redirect_to rooms_path
+        if !params[:room][:name].empty? && params[:user_id]
+            user = User.find(params[:user_id])
+            room = user.rooms.build(room_params)
+            user.save
+            redirect_to room_path(room)
+        else
+            redirect_to rooms_path
+        end
     end 
 
     def show 
@@ -27,7 +34,7 @@ class RoomsController < ApplicationController
     private 
 
     def room_params 
-        params.require(:room).permit(:name)
+        params.require(:room).permit(:name, :user_id)
     end
 
 end
