@@ -1,7 +1,7 @@
-Create new room
+Create new channel <%= link_to 'home', user_path(@user) %>
 
 <div id="form">
-    <%= form_for @room, html: { id: "new_room_form" } do |f| %>
+    <%= form_for ([@user, @room]), html: { id: "new_room_form" } do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name, id: "input" %>
         <%= f.submit "create" %>
@@ -10,7 +10,7 @@ Create new room
 
 
 
-Show all the rooms here
+Show all the channels here
 
 <ul>
     <% @rooms.each do |room| %>
