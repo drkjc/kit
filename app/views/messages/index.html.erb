@@ -13,6 +13,6 @@ Show all the contacts here
 
 <ul>
     <% User.all.each do |user| %>
-        <li><%= link_to user.name, rooms_path(:contact_id => user.id), :method => :post %></li>
+        <li><%= link_to user.name, rooms_path(:name => user.name), :method => :post %></li>
     <% end %>
 </ul>
