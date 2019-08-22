@@ -32,10 +32,9 @@ function showChannelForm(event) {
 //     }) 
 
     function createChannel() {
-        let channel = {
+        const channel = {
             name: document.getElementById('username').value
         }
-
         console.log(channel)
         fetch('/rooms', {
             method: 'POST',
@@ -44,11 +43,9 @@ function showChannelForm(event) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
-        }).then(response => response.text())
+        }).then(response => response.json())
             .then(channel => {
-                debugger;
-                console.log(channel)
-                document.getElementById("channels").append += `<li><a href="rooms/${channel.name}">${channel.name}</a></li>`;
+                document.getElementById("channels").innerHTML += `<li><a href="rooms/${channel.name}">${channel.name}</a></li>`;
                 let channelFormDiv = document.getElementById('channelForm');
                 channelFormDiv.innerHTML = '';
             })

@@ -1,38 +1,29 @@
 class RoomsController < ApplicationController 
     # before_action :find_user 
+    skip_before_action :verify_authenticity_token
     
     def index
         @rooms = Room.all
         @room = Room.new
+        render json: @rooms, status: 201
     end 
 
-    def new; end 
+    def new
+
+    end 
 
     def create 
-        room = Room.new(room_params)
+        room = Room.new(name: params[:channel][:name])
+        room.name = room.name.split.join('-')
         if room.save
             render json: room, status: 201
         else
             render json: room, status: :bad_request
         end
-        # room_name = params[:name] + "-" + @user.name
-        # room = Room.find_by(name: params[room_name])
-        # if !room
-        #     room_name = params[:name] + "-" + @user.name
-        #     room = @user.rooms.build(name: room_name)
-        #     room.save 
-        #     render json: room 
-        # elsif !params[:room][:name].empty?
-        #     room = @user.rooms.build(room_params)
-        #     @user.save
-        #     render json: room
-        # else
-        #     render json: room, status: :bad_request
-        # end
     end 
 
     def show 
-        room = Room.find(params[:id])
+        room = Room.friendly.find(params[:id])
         @message = Message.new
         render json: room
     end 
