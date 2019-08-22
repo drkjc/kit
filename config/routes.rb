@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/signup', to: 'users#new'
+  get '/logout', to: 'sessions#destroy'
+
+  get '/messages', to: 'messages#index'
+  resources :messages, except: [:index]
   
+  get '/channels', to: 'rooms#index'
   resources :rooms do 
     resources :messages    
   end

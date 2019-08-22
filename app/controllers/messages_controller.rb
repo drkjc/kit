@@ -1,8 +1,18 @@
 class MessagesController < ApplicationController 
     before_action :find_user
+
+    def index 
+    end
+
+    def new 
+    end
+
+    def show 
+    end
+    
     def create
-        if !params[:message][:content].empty? && params[:room_id]
-            room = Room.find(params[:room_id])
+        if !params[:message][:content].empty?
+            room = Room.find_by(name: params[:room_id])
             message = room.messages.build(message_params)
             @user.messages << message
             room.save
