@@ -9,10 +9,12 @@ class RoomsController < ApplicationController
     def new; end 
 
     def create 
+        raise params.inspect
+        if !params[:contact_id]
+
         if !params[:room][:name].empty? && params[:user_id]
-            user = User.find(params[:user_id])
-            room = user.rooms.build(room_params)
-            user.save
+            room = @user.rooms.build(room_params)
+            @user.save
             redirect_to room_path(room)
         else
             redirect_to rooms_path
