@@ -16,5 +16,8 @@
 //= require jquery
 //= require_tree .
 
+$(document).ready(function () {
+});
+
 
 

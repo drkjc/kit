@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
         if @user 
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to users_path
         else 
             redirect_to signup_path
         end

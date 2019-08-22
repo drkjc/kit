@@ -1,0 +1,15 @@
+<h1><%= @user.name %></h1>
+
+<%= link_to "Add a Channel", '#', :onclick => 'showChannelForm(event);' %><br>
+<%# <a href="#" onclick="showChannelForm" id="channelForm">Add a channel</a> %>
+<%= link_to "Direct Message", messages_path %><hr><br>
+
+<div id="channelForm">
+
+</div>
+
+<ul id="channels"></ul>
+
+<% @user.rooms.each do |room| %>
+    <%= link_to room.name, room_path(room) %><hr><br>
+<% end %>

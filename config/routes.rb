@@ -8,13 +8,17 @@ Rails.application.routes.draw do
   get '/messages', to: 'messages#index'
   resources :messages, except: [:index]
   
-  get '/channels', to: 'rooms#index'
-  resources :rooms do 
-    resources :messages    
-  end
+  #get '/channels', to: 'rooms#index'
 
-  resources :users do
-    resources :rooms 
-  end
+  resources :rooms
+  resources :users
+
+  # resources :rooms do 
+  #   resources :messages    
+  # end
+
+  # resources :users do
+  #   resources :rooms 
+  # end
 
 end

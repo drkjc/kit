@@ -1,8 +1,0 @@
-<h1><%= @user.name %></h1>
-
-<%= link_to "Add a Channel", channels_path %><br>
-<%= link_to "Direct Message", messages_path %><hr><br>
-
-<% @user.rooms.each do |room| %>
-    <%= link_to room.name, room_path(room) %><hr><br>
-<% end %>
