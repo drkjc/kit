@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
     end 
 
     def show 
-        room = Room.friendly.find(params[:id])
+        room = Room.find(params[:id])
         @message = Message.new
         render json: room
     end 

@@ -5,7 +5,7 @@ function showChannelForm(event) {
     const html =
         `<form onsubmit="createChannel(); return false;">
         <label>Name: </label>
-        <input type='text' id='name'/>
+        <input type='text' id='username'/>
         <input type='submit' value='submit'/>    
         </form>`
 
@@ -32,8 +32,8 @@ function showChannelForm(event) {
 //     }) 
 
     function createChannel() {
-        const channel = {
-            name: document.getElementById('name').value
+        let channel = {
+            name: document.getElementById('username').value
         }
 
         console.log(channel)
@@ -46,12 +46,15 @@ function showChannelForm(event) {
             }
         }).then(response => response.text())
             .then(channel => {
+                debugger;
                 console.log(channel)
                 document.getElementById("channels").append += `<li><a href="rooms/${channel.name}">${channel.name}</a></li>`;
                 let channelFormDiv = document.getElementById('channelForm');
                 channelFormDiv.innerHTML = '';
             })
 }
+
+
 
 //submit form createChannel();
 //createChannel posts to rooms create route

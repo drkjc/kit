@@ -2,11 +2,10 @@
 
 <%= link_to "Add a Channel", '#', :onclick => 'showChannelForm(event);' %><br>
 <%# <a href="#" onclick="showChannelForm" id="channelForm">Add a channel</a> %>
-<%= link_to "Direct Message", messages_path %><hr><br>
+<%= link_to "Direct Message", '#', :onclick => 'showDmForm(event);' %><hr><br>
 
-<div id="channelForm">
-
-</div>
+<div id="channelForm"></div>
+<div id="dmForm"></div>
 
 <ul id="channels"></ul>
 
