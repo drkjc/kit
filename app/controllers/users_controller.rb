@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
 
     def search 
-      flash[:success] = "You made it"
+      @users = User.all
     end
 
     def show 
