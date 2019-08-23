@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :rooms
   resources :users
+  get '/search', to: 'users#search' 
 
   # resources :rooms do 
   #   resources :messages    
