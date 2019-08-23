@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController 
-    # before_action :find_user 
+    before_action :find_user 
     skip_before_action :verify_authenticity_token
     
     def index
@@ -13,9 +13,10 @@ class RoomsController < ApplicationController
     end 
 
     def create 
-        room = Room.new(name: params[:channel][:name])
+        room = @user.rooms.build(name: params[:channel][:name])
         room.name = room.name.split.join('-')
-        if room.save
+        if @user.save
+            binding.pry
             render json: room, status: 201
         else
             render json: room, status: :bad_request
