@@ -1,25 +1,38 @@
-<h1><%= @user.name %></h1>
+<div id="nav-bar">
 
-<%= link_to "Channels", '#', :onclick => 'showChannelForm(event);' %><br>
-<%# <a href="#" onclick="showChannelForm" id="channelForm">Add a channel</a> %>
+  <h1><%= @user.name %></h1>
 
-<div id="channelForm"></div>
+  <%= link_to "Channels", '#', :onclick => 'showChannelForm(event);' %><br>
 
-<ul id="channels">
-  <% @user.rooms.each do |room| %>
-    <% if !room.name.include?(@user.name) %>
-      <%= link_to room.name, room_path(room) %><hr><br>
+  <div id="channelForm"></div>
+
+  <ul id="channels">
+    <% @user.rooms.each do |room| %>
+      <% if !room.name.include?(@user.name) %>
+        <%= link_to room.name, room_path(room) %><hr><br>
+      <% end %>
     <% end %>
-  <% end %>
-</ul><hr>
+  </ul><hr>
 
-<%= link_to "Direct Message", search_path %><hr><br>
+  <%= link_to "Direct Message", search_path %><hr><br>
 
-<ul id="contacts">
-  <% @user.rooms.each do |room| %>
-    <% if room.name.include?(@user.name) %>
-    <% num = @user.name.length + 1 %>
-      <%= link_to room.name.slice(num..-1), room_path(room) %><hr><br>
+  <ul id="contacts">
+    <% @user.rooms.each do |room| %>
+      <% if room.name.include?(@user.name) %>
+      <% num = @user.name.length + 1 %>
+        <%= link_to room.name.slice(num..-1), room_path(room) %><hr><br>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+
+</div>
+
+<div id="read-box">
+
+  <div id="message_form">
+    <%= form_for @message do |f| %>
+      <%= f.text_area :content, placeholder: 'New message...' %><br>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

@@ -14,17 +14,22 @@ class RoomsController < ApplicationController
 
     def create
       if params[:user_name] 
-        room_name = @user.name + '-' + params[:user_name]
-        room = Room.friendly.find_by(name: room_name)
+        contact = User.find_by(name: params[:user_name])
+        room = Room.all.find do |room|
+          contact.rooms.include?(room) && @user.rooms.include?(room) 
+        end
         if room 
-          redirect_to rooms_path(room)
-        else
-          room = @user.rooms.build(name: room_name)
-          if @user.save 
-            redirect_to rooms_path(room)
-          end
-        end  
-      else
+          render json: room, status: 201
+        else 
+          room_name = '#' + SecureRandom.alphanumeric
+          room = Room.create(name: room_name)
+          contact.rooms << room 
+          @user.rooms << room 
+          contact.save 
+          @user.save
+          render json: room, status: 201  
+        end 
+      else 
         room = Room.find_by(name: params[:channel][:name])
         if room 
           render json: room, status: 201
