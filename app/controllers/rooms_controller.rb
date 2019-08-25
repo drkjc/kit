@@ -25,10 +25,17 @@ class RoomsController < ApplicationController
           end
         end  
       else
-        room = @user.rooms.build(name: params[:channel][:name])
-        room.name = room.name.split.join('-')
-        if @user.save 
+        room = Room.find_by(name: params[:channel][:name])
+        if room 
           render json: room, status: 201
+        else
+          room = @user.rooms.build(name: params[:channel][:name])
+          room.name = room.name.split.join('-')
+          if @user.save 
+            render json: room, status: 201
+          else 
+            render json: room, status: :bad_request
+          end
         end
       end
     end 
