@@ -8,7 +8,7 @@
 
   <ul id="channels">
     <% @user.rooms.each do |room| %>
-      <% if !room.name.include?(@user.name) %>
+      <% if !room.name.include?('#') %>
         <%= link_to room.name, room_path(room) %><hr><br>
       <% end %>
     <% end %>
@@ -18,9 +18,10 @@
 
   <ul id="contacts">
     <% @user.rooms.each do |room| %>
-      <% if room.name.include?(@user.name) %>
-      <% num = @user.name.length + 1 %>
-        <%= link_to room.name.slice(num..-1), room_path(room) %><hr><br>
+      <% room.users.each do |u| %>
+        <% if !u.name.include?(@user.name) %>
+          <%= link_to u.name, room_path(room) %><hr><br>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
