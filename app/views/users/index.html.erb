@@ -7,10 +7,19 @@
 
 <ul id="channels">
   <% @user.rooms.each do |room| %>
-    <%= link_to room.name, room_path(room) %><hr><br>
+    <% if !room.name.include?(@user.name) %>
+      <%= link_to room.name, room_path(room) %><hr><br>
+    <% end %>
   <% end %>
 </ul><hr>
 
 <%= link_to "Direct Message", search_path %><hr><br>
 
-<div id="dmForm"></div>
+<ul id="contacts">
+  <% @user.rooms.each do |room| %>
+    <% if room.name.include?(@user.name) %>
+    <% num = @user.name.length + 1 %>
+      <%= link_to room.name.slice(num..-1), room_path(room) %><hr><br>
+    <% end %>
+  <% end %>
+</ul>
