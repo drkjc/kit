@@ -4,12 +4,10 @@ class RoomsController < ApplicationController
     
     def index
       @rooms = Room.all
-      @room = Room.new
       render json: @rooms, status: 201
     end 
 
     def new
-
     end 
 
     def create
@@ -19,7 +17,7 @@ class RoomsController < ApplicationController
           contact.rooms.include?(room) && @user.rooms.include?(room) 
         end
         if room 
-          render json: room, status: 201
+          redirect_to users_path
         else 
           room_name = '#' + SecureRandom.alphanumeric
           room = Room.create(name: room_name)
@@ -27,7 +25,7 @@ class RoomsController < ApplicationController
           @user.rooms << room 
           contact.save 
           @user.save
-          render json: room, status: 201  
+          redirect_to users_path
         end 
       else 
         room = Room.find_by(name: params[:channel][:name])
@@ -46,12 +44,9 @@ class RoomsController < ApplicationController
     end 
 
     def show 
+      #raise params.inspect
       room = Room.friendly.find(params[:id])
-      @message = Message.new
-      respond_to do |format|
-        format.html
-        format.json { render :json => room.to_json }
-      end
+      render json: room, status: 201
     end 
 
     def edit 

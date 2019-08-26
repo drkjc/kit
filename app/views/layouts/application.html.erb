@@ -10,9 +10,36 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "flash #{key}" %>
-    <% end %>
+
+    <div id="nav-bar">
+
+      <h1><%= @user.name %></h1>
+
+      <%= link_to "Channels", '#', :onclick => 'showChannelForm(event);' %><br>
+
+      <div id="channelForm"></div>
+
+      <ul id="channels">
+        <% @user.rooms.each do |room| %>
+          <% if !room.name.include?('#') %>
+            <%= link_to room.name, room_path(room) %><hr><br>
+          <% end %>
+        <% end %>
+      </ul><hr>
+
+      <%= link_to "Direct Message", search_path %><hr><br>
+
+      <ul id="contacts">
+        <% @user.rooms.each do |room| %>
+          <% room.users.each do |u| %>
+            <% if !u.name.include?(@user.name) %>
+              <%= link_to u.name, room_path(room)%><hr><br>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+
+    </div>
 
     <%= yield %>
   </body>

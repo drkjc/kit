@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
     end
     
     def create
+      raise params.inspect
         if !params[:message][:content].empty?
             room = Room.find_by(name: params[:room_id])
             message = room.messages.build(message_params)
