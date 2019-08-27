@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController 
     before_action :find_user 
-    skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token, except: [:show]
     
     def index
       @rooms = Room.all
@@ -14,12 +14,12 @@ class RoomsController < ApplicationController
       if params[:user_name] 
         contact = User.find_by(name: params[:user_name])
         room = Room.all.find do |room|
-          contact.rooms.include?(room) && @user.rooms.include?(room) 
+          contact.rooms.include?(room) && @user.rooms.include?(room)
         end
         if room 
           redirect_to users_path
         else 
-          room_name = '#' + SecureRandom.alphanumeric
+          room_name = 'kit' + SecureRandom.alphanumeric
           room = Room.create(name: room_name)
           contact.rooms << room 
           @user.rooms << room 
@@ -44,8 +44,7 @@ class RoomsController < ApplicationController
     end 
 
     def show 
-      #raise params.inspect
-      room = Room.friendly.find(params[:id])
+      room = Room.friendly.find_by(name: params[:id])
       render json: room, status: 201
     end 
 

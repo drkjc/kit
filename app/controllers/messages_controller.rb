@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
     end
 
     def show 
+      message = Message.find(params[:id])
+      render json: message, status: 201
     end
     
     def create
-      raise params.inspect
+      binding.pry
         if !params[:message][:content].empty?
             room = Room.find_by(name: params[:room_id])
             message = room.messages.build(message_params)

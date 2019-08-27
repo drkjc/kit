@@ -21,8 +21,8 @@
 
       <ul id="channels">
         <% @user.rooms.each do |room| %>
-          <% if !room.name.include?('#') %>
-            <%= link_to room.name, room_path(room) %><hr><br>
+          <% if !room.name.include?('kit') %>
+            <%= link_to room.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "channels" } %><hr><br>
           <% end %>
         <% end %>
       </ul><hr>
@@ -33,7 +33,7 @@
         <% @user.rooms.each do |room| %>
           <% room.users.each do |u| %>
             <% if !u.name.include?(@user.name) %>
-              <%= link_to u.name, room_path(room)%><hr><br>
+              <%= link_to u.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%><hr><br>
             <% end %>
           <% end %>
         <% end %>

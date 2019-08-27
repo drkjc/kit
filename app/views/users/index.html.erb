@@ -4,13 +4,9 @@
       <%= content_tag :div, value, class: "flash #{key}" %>
     <% end %>
 
-  <div id="show_messages">
+  <div id="showMessages">
   </div>
 
-  <div id="message_form">
-    <%= form_for @message do |f| %>
-      <%= f.text_area :content, placeholder: 'New message...' %><br>
-      <%= f.submit %>
-    <% end %>
+  <div id="messageForm">
   </div>
 </div>

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController 
-    before_action :find_user, only: [:index, :show]
+    before_action :find_user, only: [:index, :show, :search]
+
+    def show 
+      @user = User.find(params[:id])
+    end
 
     def index
       @message = Message.new
@@ -12,6 +16,7 @@ class UsersController < ApplicationController
 
     def new 
       @user = User.new
+      render layout: 'login'
     end
 
     def create
@@ -24,13 +29,11 @@ class UsersController < ApplicationController
       end
     end
 
-    def search 
+    def search
+      render layout: 'login' 
       @users = User.all
     end
 
-    def show 
-      @user = User.find(params[:id])
-    end
 
     def destroy 
       log_out 
