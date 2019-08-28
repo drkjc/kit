@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController 
     before_action :find_user
+    skip_before_action :verify_authenticity_token
 
     def index 
     end
@@ -13,9 +14,9 @@ class MessagesController < ApplicationController
     end
     
     def create
-      binding.pry
         if !params[:message][:content].empty?
             room = Room.find_by(name: params[:room_id])
+            binding.pry
             message = room.messages.build(message_params)
             @user.messages << message
             room.save

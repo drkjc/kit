@@ -45,7 +45,7 @@ function getEvent(event) {
 function createMessageForm(id) {
   const messageForm = document.getElementById("messageForm");
 
-  const html = "<form onsubmit='createMessage(); return false;'><input type='text' id='" + id + "' placeholder='send message...'/><input type='submit' value='submit'/></form>"
+  const html = `<form onsubmit='createMessage(event, id); return false;'><input type='text' id='text' placeholder='send message...'/><input type='hidden' name='room' value="${id}"/><input type='submit' value='submit'/></form>`
 
   messageForm.innerHTML = html;
 }
@@ -54,6 +54,7 @@ function createMessageForm(id) {
 function showMessages(event) {
   event.preventDefault();
   let id;
+  let messageView = document.getElementById('showMessages');
   id = getEvent(event);
 
   createMessageForm(id);
@@ -69,19 +70,20 @@ function showMessages(event) {
   })
     .then(response => response.json())
     .then(room => {
-      let messageView = document.getElementById('showMessages');
-      room.messages.forEach(function(message) {
+      room.messages.map(function(message) {
         messageView.innerHTML += `<span class="message">${message.content}</span><br>`
       });
     })
+  messageView.innerHTML = " ";
 }
 
-function createMessage(event) {
+function createMessage(event, id) {
 
+  event.preventDefault();
   let message = {
-    content: document.getElementById('messageForm').value
+    content: document.getElementById('text').value,
+    id: id
   } 
-  
   console.log(message)
 
   fetch('/messages', {

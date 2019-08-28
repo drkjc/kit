@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController 
     before_action :find_user 
-    skip_before_action :verify_authenticity_token, except: [:show]
+    skip_before_action :verify_authenticity_token#, except: [:show]
     
     def index
       @rooms = Room.all
