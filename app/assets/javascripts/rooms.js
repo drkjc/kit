@@ -1,3 +1,18 @@
+class Message {
+
+  constructor(message) {
+    this.id = message.id 
+    this.content = message.content
+    this.room_id = message.room_id 
+    this.user_id = message.user_id
+  }
+
+  renderMessage() {
+    return `<span class="message">${this.content}</span><br>`
+  }
+}
+
+
 function showChannelForm(event) {
   event.preventDefault();
   const channelForm = document.getElementById("channelForm");
@@ -70,11 +85,12 @@ function showMessages(event) {
   })
     .then(response => response.json())
     .then(room => {
-      room.messages.map(function(message) {
-        messageView.innerHTML += `<span class="message">${message.content}</span><br>`
-      });
+      messageView.innerHTML += room.messages.map(message => {
+        let m = new Message(message)
+        return m.renderMessage()
+      }).join('');
     })
-  messageView.innerHTML = " ";
+  messageView.innerHTML = '';
 }
 
 function createMessage(event) {
@@ -95,7 +111,7 @@ function createMessage(event) {
   .then(response => response.json())
   .then(message => {
     console.log(message);
-    document.getElementById('showMessages').innerHTML += `<span>${message.content}</span>`
+    document.getElementById('showMessages').innerHTML += `<span>${message.content}</span><br>`
   })
   document.getElementById('text').value = " ";
 }
