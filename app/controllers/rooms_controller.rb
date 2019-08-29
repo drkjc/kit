@@ -16,15 +16,16 @@ class RoomsController < ApplicationController
         room = Room.all.find do |room|
           contact.rooms.include?(room) && @user.rooms.include?(room)
         end
-        if room 
+        if !room.nil?
           redirect_to users_path
         else 
           room_name = 'kit' + SecureRandom.alphanumeric
-          room = Room.create(name: room_name)
+          room = Room.new(name: room_name)
           contact.rooms << room 
           @user.rooms << room 
           contact.save 
           @user.save
+          room.save
           redirect_to users_path
         end 
       else 

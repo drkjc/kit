@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/logout', to: 'sessions#destroy'
 
-  get '/messages', to: 'messages#index'
-  resources :messages, except: [:index]
+  resources :messages
   
   #get '/channels', to: 'rooms#index'
 

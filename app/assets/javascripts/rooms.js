@@ -35,19 +35,20 @@ function createChannel() {
 function getEvent(event) {
   let id;
   if (event.currentTarget.dataset.class === "contacts") {
-    id = document.getElementById('contacts').firstElementChild.dataset.id;
+    id = event.currentTarget.dataset.id;
   } else if (event.currentTarget.dataset.class === "channels") {
-    id = document.getElementById('channels').firstElementChild.dataset.id;
+    id = event.currentTarget.dataset.id;
   }
   return id;
 }
 
 function createMessageForm(id) {
+
   const messageForm = document.getElementById("messageForm");
 
-  const html = `<form onsubmit='createMessage(event, id); return false;'><input type='text' id='text' placeholder='send message...'/><input type='hidden' name='room' value="${id}"/><input type='submit' value='submit'/></form>`
+  const html = `<form name='form' id='form' onsubmit='createMessage(event);'><input type='text' id='text' placeholder='send message...'/><input type='hidden' name='room' value="${id}"/><input type='submit' value='submit'/></form>`
 
-  messageForm.innerHTML = html;
+  messageForm.innerHTML = html; 
 }
 
 
@@ -56,7 +57,6 @@ function showMessages(event) {
   let id;
   let messageView = document.getElementById('showMessages');
   id = getEvent(event);
-
   createMessageForm(id);
 
   console.log(id)
@@ -77,15 +77,13 @@ function showMessages(event) {
   messageView.innerHTML = " ";
 }
 
-function createMessage(event, id) {
-
+function createMessage(event) {
   event.preventDefault();
   let message = {
     content: document.getElementById('text').value,
-    id: id
+    id: document.form.elements['room'].value
   } 
   console.log(message)
-
   fetch('/messages', {
     method: 'POST',
     body: JSON.stringify({ message }),
@@ -97,6 +95,8 @@ function createMessage(event, id) {
   .then(response => response.json())
   .then(message => {
     console.log(message);
+    document.getElementById('showMessages').innerHTML += `<span>${message.content}</span>`
   })
+  document.getElementById('text').value = " ";
 }
 

@@ -31,9 +31,9 @@
 
       <ul id="contacts">
         <% @user.rooms.each do |room| %>
-          <% room.users.each do |u| %>
-            <% if !u.name.include?(@user.name) %>
-              <%= link_to u.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%><hr><br>
+          <% room.users.each do |user| %>
+            <% if user.name != @user.name %>
+              <%= link_to user.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%><hr><br>
             <% end %>
           <% end %>
         <% end %>
@@ -42,5 +42,6 @@
     </div>
 
     <%= yield %>
+    
   </body>
 </html>

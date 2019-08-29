@@ -15,12 +15,12 @@ class MessagesController < ApplicationController
     
     def create
         if !params[:message][:content].empty?
-            room = Room.find_by(name: params[:room_id])
-            binding.pry
-            message = room.messages.build(message_params)
-            @user.messages << message
-            room.save
-            redirect_to room_path(room)
+            room = Room.find_by(name: params[:message][:id])
+            message = Message.new(content: params[:message][:content])
+            message.room = room
+            message.user = @user
+            message.save
+            render json: message, status: 201
         else
             redirect_to rooms_path
         end
@@ -28,8 +28,8 @@ class MessagesController < ApplicationController
 
     private 
 
-    def message_params 
-        params.require(:message).permit(:content)
-    end
+    # def message_params 
+    #     params.require(:message).permit(:content)
+    # end
 
 end
