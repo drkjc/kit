@@ -26,7 +26,7 @@ function createChannel() {
     }})
     .then(response => response.json())
     .then(channel => {
-      document.getElementById("channels").innerHTML += `<li><a href="rooms/${channel.name}">${channel.name}</a></li>`;
+      document.getElementById("channels").innerHTML += `<li onclick='showMessages(event);'><a>${channel.name}</li><a>`;
       let channelFormDiv = document.getElementById('channelForm');
       channelFormDiv.innerHTML = '';
   });

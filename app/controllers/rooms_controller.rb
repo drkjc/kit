@@ -33,8 +33,10 @@ class RoomsController < ApplicationController
         if room 
           render json: room, status: 201
         else
-          room = @user.rooms.build(name: params[:channel][:name])
+          room = Room.new(name: params[:channel][:name])
           room.name = room.name.split.join('-')
+          @user.rooms << room
+          room.save
           if @user.save 
             render json: room, status: 201
           else 
