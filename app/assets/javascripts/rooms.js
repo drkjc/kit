@@ -61,7 +61,7 @@ function createMessageForm(id) {
 
   const messageForm = document.getElementById("messageForm");
 
-  const html = `<form name='form' id='form' onsubmit='createMessage(event);'><input type='text' id='text' placeholder='send message...'/><input type='hidden' name='room' value="${id}"/><input type='submit' value='submit'/></form>`
+  const html = `<form name='form' id='form' onsubmit='createMessage(event);'><input type='text' id='text' placeholder='send message...'/><input type='hidden' name='room' value="${id}"/></form>`
 
   messageForm.innerHTML = html; 
 }
@@ -69,13 +69,12 @@ function createMessageForm(id) {
 
 function showMessages(event) {
   event.preventDefault();
-  let id;
+  let id
   let messageView = document.getElementById('showMessages');
   id = getEvent(event);
   createMessageForm(id);
-
+  
   console.log(id)
-
   fetch('/rooms/' + id, {
     method: 'GET',
     headers: {
@@ -89,12 +88,15 @@ function showMessages(event) {
         let m = new Message(message)
         return m.renderMessage()
       }).join('');
+      messageView.scrollTop = messageView.scrollHeight;
     })
   messageView.innerHTML = '';
 }
+ 
 
 function createMessage(event) {
   event.preventDefault();
+  let messageView = document.getElementById('showMessages');
   let message = {
     content: document.getElementById('text').value,
     id: document.form.elements['room'].value
@@ -112,6 +114,7 @@ function createMessage(event) {
   .then(message => {
     console.log(message);
     document.getElementById('showMessages').innerHTML += `<span>${message.content}</span><br>`
+    messageView.scrollTop = messageView.scrollHeight;
   })
   document.getElementById('text').value = " ";
 }
