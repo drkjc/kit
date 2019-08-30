@@ -31,6 +31,8 @@ class RoomsController < ApplicationController
       else 
         room = Room.find_by(name: params[:channel][:name])
         if room 
+          @user.rooms << room 
+          @user.save
           render json: room, status: 201
         else
           room = Room.new(name: params[:channel][:name])

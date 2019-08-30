@@ -19,9 +19,7 @@ function showChannelForm(event) {
 
   const html =
     `<form onsubmit="createChannel(); return false;">
-    <label>Name: </label>
-    <input type='text' id='name'/>
-    <input type='submit' value='submit'/>    
+    <input type='text' id='name'/>    
     </form>`
 
   channelForm.innerHTML = html;
@@ -41,10 +39,10 @@ function createChannel() {
     }})
     .then(response => response.json())
     .then(channel => {
-      document.getElementById("channels").innerHTML += `<li onclick='showMessages(event);'><a>${channel.name}</li><a>`;
-      let channelFormDiv = document.getElementById('channelForm');
-      channelFormDiv.innerHTML = '';
+      document.getElementById("channels").innerHTML += `<a onclick='showMessages(event);'>${channel.name}<a>`;
   });
+  let channelFormDiv = document.getElementById('channelForm');
+  channelFormDiv.innerHTML = '';
 }
 
 function getEvent(event) {
@@ -71,6 +69,7 @@ function showMessages(event) {
   event.preventDefault();
   let id
   let messageView = document.getElementById('showMessages');
+  debugger;
   id = getEvent(event);
   createMessageForm(id);
   
@@ -101,6 +100,7 @@ function createMessage(event) {
     content: document.getElementById('text').value,
     id: document.form.elements['room'].value
   } 
+  debugger;
   console.log(message)
   fetch('/messages', {
     method: 'POST',
