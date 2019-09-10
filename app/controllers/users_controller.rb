@@ -1,5 +1,5 @@
 class UsersController < ApplicationController 
-    before_action :find_user, only: [:index, :show, :search]
+    before_action :find_user, only: [:index, :show, :search, :settings]
 
     def show 
       @user = User.find(params[:id])
@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     def search
       render layout: 'login' 
       @users = User.all
+    end
+
+    def settings
+      #binding.pry 
+      render json: @user, status: 201
     end
 
 

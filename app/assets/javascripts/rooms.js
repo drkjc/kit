@@ -12,6 +12,12 @@ class Message {
   }
 }
 
+function clearSettings() {
+  let settingsDiv;
+
+  settingsDiv = document.querySelector('#settings').innerHTML = "";
+}
+
 
 function showChannelForm(event) {
   event.preventDefault();
@@ -67,9 +73,10 @@ function createMessageForm(id) {
 
 function showMessages(event) {
   event.preventDefault();
+  clearSettings();
   let id
   let messageView = document.getElementById('showMessages');
-  debugger;
+
   id = getEvent(event);
   createMessageForm(id);
   
@@ -100,7 +107,7 @@ function createMessage(event) {
     content: document.getElementById('text').value,
     id: document.form.elements['room'].value
   } 
-  debugger;
+
   console.log(message)
   fetch('/messages', {
     method: 'POST',

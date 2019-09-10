@@ -1,3 +1,9 @@
+function clearMessages() {
+  let showMessages, messageForm;
+
+  showMessages = document.querySelector('#showMessages').innerHTML = ""
+  messageForm = document.querySelector('#messageForm').innerHTML = ""
+}
 
 function filterUsers() {
   var input, filter, ul, li, a, i, txtValue;
@@ -16,4 +22,26 @@ function filterUsers() {
       li[i].style.display = "none";
     }
   }
+}
+
+function showSettings(event) {
+  let settingsDiv;
+  event.preventDefault(); 
+  clearMessages();
+
+  settingsDiv = document.querySelector('#settings');
+
+  fetch('/settings', {
+    method: 'GET',
+    headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }})
+  .then(resp => resp.json() )
+  .then(user => {
+    console.log(user);
+    settingsDiv.insertAdjacentHTML("beforeend", `<span id='username'>${user.name}</span><br>`);
+    settingsDiv.insertAdjacentHTML("beforeend",`<span id='email'>${user.email}</span>`)
+  })
+  settingsDiv.innerHTML = ""
 }
