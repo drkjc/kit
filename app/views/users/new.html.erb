@@ -1,3 +1,7 @@
-<%= form_for @user, :url => { :action => "create"} do |form| %>
-  <%= render partial: 'access_form', local: { f: form } %>
+<%= content_tag :div, class: 'accessForm' do  %>
+  <h1 class="accessTitle">Signup</h1>
+
+  <%= form_for @user, :url => { :action => "create"} do |form| %>
+    <%= render partial: 'access_form', local: { f: form } %>
+  <% end %><br>
 <% end %>

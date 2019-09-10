@@ -1,5 +1,10 @@
-<h1>Log In</h1><br><br>
+<%= content_tag :div, class: 'accessForm' do  %>
+  <h1 class="accessTitle">Log in to Kit</h1><br>
 
-<%= render 'users/access_form' %><br>
+  <span class="accessLink">Don't have an account? <%= link_to 'Signup!', '/signup' %></span><br><br>
 
-<%= link_to('Log in with Github!', '/auth/github') %>
+  <%= render 'users/access_form' %><br>
+
+  <%= link_to('Log in with Github!', '/auth/github', id: 'githubLogin') %><br><br>
+
+<% end %>

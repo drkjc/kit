@@ -1,0 +1,44 @@
+body {
+  background: #7e8287;
+}
+
+.accessForm h1 {
+  font-family: 'Work Sans', sans-serif;
+  color: #b98389;
+}
+
+.accessForm {
+  text-align: center;
+  margin: 0 20rem;
+  padding: 10px;
+  font-family: "IMB plex sans", sans-serif;
+}
+
+.accessForm input {
+  padding: 5px;
+}
+
+#accessButton {
+  border-radius: 12px;
+  width: 6rem;
+  background-color: #b98389;
+  color: white;
+  border: none;
+  font-size: bold;
+}
+
+.accessLink,
+.accessLink a, 
+#githubLogin {
+  text-decoration: none;
+  size: 1.5rem;
+}
+
+.accessLink a,
+#githubLogin {
+  color: #b4d4ee;
+}
+
+.accessLink {
+  color: white;
+}

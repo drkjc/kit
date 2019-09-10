@@ -1,5 +1,6 @@
 class UsersController < ApplicationController 
     before_action :find_user, only: [:index, :show, :search, :settings]
+    
 
     def show 
       @user = User.find(params[:id])
