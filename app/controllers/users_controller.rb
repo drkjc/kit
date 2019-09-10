@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     def create
       user = User.new(name: params[:name], email: params[:email], password_digest: params[:password_digest])
       if user.save 
-        redirect_to users_path
+        redirect_to home_path
       else 
         flash[:error] = "Please Try Again."
         redirect_to signup_path 

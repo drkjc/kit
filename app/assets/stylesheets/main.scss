@@ -1,6 +1,32 @@
+#username {
+  color: black;
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
+
+}
+
+#nav-links {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#nav-links a {
+  text-decoration: none;
+  font-family: "IMB plex sans", sans-serif;
+  color: #8aa3b8;
+}
+
+.nav-links {
+  text-decoration: none;
+  font-family: "IMB plex sans", sans-serif;
+  font-size: 1.25rem;
+  padding: 7px;
+  color: #81717a;
+}
+
 #nav-bar {
   overflow: hidden;
-  background: green;
+  background: #d5d6d8;
   width: 200px;
   float: left;
   //new 
@@ -19,6 +45,13 @@
   // height: 70vh;
 }
 
+#channels a, 
+#contacts a {
+  text-decoration: none;
+  font-family: 'Work Sans', sans-serif;
+  color: #b98389;
+}
+
 #showMessages, #settings {
   position: fixed;
   overflow-y: scroll;
@@ -31,6 +64,7 @@
 
 .message {
   display: block;
+  font-family: "IMB plex sans", sans-serif;
 }
 
 #form {

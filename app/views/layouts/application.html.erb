@@ -13,11 +13,14 @@
 
     <div id="nav-bar">
 
-      <h1><%= @user.name %></h1>
-      <span><%= link_to 'settings', '#', :onclick => 'showSettings(event);' %></span><br>
-      <span><%= link_to 'logout', '/logout' %></span><br><br>
+      <h1 id="username"><%= @user.name.capitalize %></h1>
 
-      <%= link_to "Channels", '#', :onclick => 'showChannelForm(event);' %><br>
+      <div id="nav-links">
+        <%= link_to 'settings', '#', :onclick => 'showSettings(event);' %><br>
+        <%= link_to 'logout', '/logout' %><br><br>
+      </div>
+
+      <%= link_to "Channels", '#', :onclick => 'showChannelForm(event);', class: 'nav-links' %><br>
 
       <div id="channelForm"></div>
 
@@ -29,7 +32,7 @@
         <% end %>
       </ul><hr>
 
-      <%= link_to "Direct Message", search_path %><hr><br>
+      <%= link_to "Direct Message", search_path, class: 'nav-links' %><br>
 
       <ul id="contacts">
         <% @user.rooms.each do |room| %>

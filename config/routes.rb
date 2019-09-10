@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :rooms
   resources :users
+  get '/home', to: 'users#index'
   get '/search', to: 'users#search' 
 
   # resources :rooms do 

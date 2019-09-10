@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:user][:name])
       if @user 
         session[:user_id] = @user.id
-          redirect_to users_path
+          redirect_to home_path
       else 
         redirect_to signup_path
       end

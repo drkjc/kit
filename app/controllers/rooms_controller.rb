@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
           contact.rooms.include?(room) && @user.rooms.include?(room)
         end
         if !room.nil?
-          redirect_to users_path
+          redirect_to home_path
         else 
           room_name = 'kit' + SecureRandom.alphanumeric
           room = Room.new(name: room_name)
@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
           contact.save 
           @user.save
           room.save
-          redirect_to users_path
+          redirect_to home_path
         end 
       else 
         room = Room.find_by(name: params[:channel][:name])
