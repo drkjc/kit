@@ -3,8 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+gem 'dotenv-rails'
 gem 'active_model_serializers'
 gem 'omniauth'
+gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'friendly_id', '~> 5.2.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
