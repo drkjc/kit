@@ -5,10 +5,11 @@ class Message {
     this.content = message.content
     this.room_id = message.room_id 
     this.user_id = message.user_id
+    this.created_at = message.created_at
   }
 
   renderMessage() {
-    return `<span class="message">${this.content}</span><br>`
+    return `<span class="message">${this.content} ${this.created_at.slice(5, 10).replace("-", ":")}</span><br>`
   }
 }
 
@@ -98,6 +99,12 @@ function showMessages(event) {
     })
   messageView.innerHTML = '';
 }
+
+function setAttributes(el, attrs) {
+  for (var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
  
 
 function createMessage(event) {
@@ -120,7 +127,10 @@ function createMessage(event) {
   .then(response => response.json())
   .then(message => {
     console.log(message);
+  
     document.getElementById('showMessages').innerHTML += `<span>${message.content}</span><br>`
+    let m = document.getElementById('showMessages').lastChild.previousSibling.classList.add("message");
+
     messageView.scrollTop = messageView.scrollHeight;
   })
   document.getElementById('text').value = " ";

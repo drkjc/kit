@@ -45,6 +45,11 @@
   // height: 70vh;
 }
 
+#channels li,
+#contacts li {
+  list-style-type: none;
+}
+
 #channels a, 
 #contacts a {
   text-decoration: none;
