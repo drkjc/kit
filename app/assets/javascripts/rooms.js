@@ -17,6 +17,7 @@ function clearSettings() {
   let settingsDiv;
 
   settingsDiv = document.querySelector('#settings').innerHTML = "";
+  document.querySelector('#info-bar').lastChild.innerHTML = "";
 }
 
 
@@ -73,12 +74,16 @@ function createMessageForm(id) {
 
 
 function showMessages(event) {
+  let id, messageView, roomName;
   event.preventDefault();
   clearSettings();
-  let id
-  let messageView = document.getElementById('showMessages');
 
+  roomName = event.currentTarget.innerHTML;
+  document.querySelector('#info-bar').innerHTML += `<h2 id="room-name">${roomName}</h2>`;
+
+  messageView = document.getElementById('showMessages');
   id = getEvent(event);
+
   createMessageForm(id);
   
   console.log(id)

@@ -1,3 +1,10 @@
+#info-bar {
+  top: 0;
+  height: 80px;
+  margin-left: 210px;
+  background-color: white;
+}
+
 #username {
   color: black;
   font-family: 'Work Sans', sans-serif;
@@ -26,7 +33,7 @@
 
 #nav-bar {
   overflow: hidden;
-  background: #d5d6d8;
+  background: #edeef0;
   width: 200px;
   float: left;
   //new 
@@ -40,7 +47,7 @@
   //overflow-y: scroll;
   //margin-left: 210px;
   //width: 90%;
-  // top: 10px;
+  // top: 80px;
   // bottom: 80px;
   // height: 70vh;
 }
@@ -62,7 +69,7 @@
   overflow-y: scroll;
   margin-left: 210px;
   width: 90%;
-  top: 10px;
+  top: 80px;
   bottom: 30px;
   height: 75vh;
 }
@@ -70,6 +77,8 @@
 .message {
   display: block;
   font-family: "IMB plex sans", sans-serif;
+  border-bottom: 0.5px solid #b98389;
+  padding: 10px;
 }
 
 #form {
