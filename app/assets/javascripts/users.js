@@ -41,8 +41,8 @@ function showSettings(event) {
   .then(resp => resp.json() )
   .then(user => {
     console.log(user);
-    settingsDiv.insertAdjacentHTML("beforeend", `<span id='username'>${user.name}</span><br>`);
-    settingsDiv.insertAdjacentHTML("beforeend",`<span id='email'>${user.email}</span>`)
+    settingsDiv.insertAdjacentHTML("beforeend", `<span class="set-title">Username: </span><br> <span id='settings-name'>${user.name}</span><hr><br>`);
+    settingsDiv.insertAdjacentHTML("beforeend",`<span class="set-title">Email: </span><br> <span id='settings-email'> ${user.email}</span>`)
   })
   settingsDiv.innerHTML = ""
 }
