@@ -84,7 +84,8 @@
   font-weight: bold;
 }
 
-#channels li:hover .deleteButton {
+#channels li:hover .deleteButton,
+#contacts li:hover .deleteButton {
   display: block;
 }
 
@@ -94,7 +95,7 @@
   text-decoration: none;
   font-family: 'Work Sans', sans-serif;
   color: #b98389;
-  padding: 1px;
+  padding: 2px;
 }
 
 .deleteButton {

@@ -27,7 +27,7 @@
       <ul id="channels">
         <% @user.rooms.each do |room| %>
           <% if !room.name.include?('kit') %>
-            <li><%= link_to room.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "channels" } %> <%= link_to 'x', '#', :onclick => 'deleteRoom(event);', :data => { :id => "#{room.name}"}, :class => 'deleteButton' %><li><br>
+            <li><%= link_to room.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "channels" } %> <%= link_to 'x', '#', :onclick => 'deleteRoom(event);', :data => { :id => "#{room.name}", :class => "channels"}, :class => 'deleteButton' %><li><br>
           <% end %>
         <% end %>
       </ul>
@@ -38,7 +38,7 @@
         <% @user.rooms.each.uniq do |room| %>
           <% room.users.each.uniq do |user| %>
             <% if user.name != @user.name %>
-              <li><%= link_to user.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%><%= link_to 'x', '#', :onclick => 'deleteRoom(event);', :data => { :id => "#{room.name}"}, :class => 'deleteButton' %></li><br>
+              <li><%= link_to user.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%><%= link_to 'x', '#', :onclick => 'deleteRoom(event);', :data => { :id => "#{room.name}", :class => "contacts"}, :class => 'deleteButton' %></li>
             <% end %>
           <% end %>
         <% end %>

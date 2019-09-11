@@ -144,6 +144,16 @@ function createMessage(event) {
 }
 
 function deleteRoom(event) {
-  debugger;
+
+  let id;
+  event.preventDefault();
+  id = getEvent(event);
+  fetch('/rooms/' + id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
 }
 
