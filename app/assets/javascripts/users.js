@@ -2,7 +2,8 @@ function clearMessages() {
   let showMessages, messageForm;
 
   showMessages = document.querySelector('#showMessages').innerHTML = ""
-  messageForm = document.querySelector('#messageForm').innerHTML = ""
+  messageForm = document.querySelector('#messageForm').innerHTML = "";
+  document.querySelector('#info-bar').lastChild.innerHTML = "Settings";
 }
 
 function filterUsers() {

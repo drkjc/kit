@@ -6,10 +6,11 @@ class Message {
     this.room_id = message.room_id 
     this.user_id = message.user_id
     this.created_at = message.created_at
+    this.username = message.username
   }
 
   renderMessage() {
-    return `<span class="message">${this.content} ${this.created_at.slice(5, 10).replace("-", ":")}</span><br>`
+    return `<span class="message">${this.username} ${this.created_at.slice(5, 10).replace("-", "/")}<br><br>${this.content}</span><br>`
   }
 }
 
@@ -27,7 +28,7 @@ function showChannelForm(event) {
 
   const html =
     `<form onsubmit="createChannel(); return false;">
-    <input type='text' id='name'/>    
+    <input type='text' id='name' placeholder="find or create channel..." />    
     </form>`
 
   channelForm.innerHTML = html;
