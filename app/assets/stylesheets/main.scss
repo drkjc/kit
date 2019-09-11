@@ -23,6 +23,18 @@
   color: #8aa3b8;
 }
 
+#nav-links a:hover,
+.nav-links:hover {
+  font-weight: bold;
+}
+
+#channels li a:hover,
+#contacts li a:hover {
+  background-color: white;
+  margin-left: 0;
+  padding: 10px 50px 10px 10px;
+}
+
 .nav-links {
   text-decoration: none;
   font-family: "IMB plex sans", sans-serif;
@@ -52,6 +64,12 @@
   // height: 70vh;
 }
 
+#channels,
+#contacts {
+  left: 0;
+  padding: 8px;
+}
+
 #channels li,
 #contacts li {
   list-style-type: none;
@@ -74,11 +92,28 @@
   height: 75vh;
 }
 
+#room-name {
+  font-size: 2rem;
+}
+
 .message {
   display: block;
   font-family: "IMB plex sans", sans-serif;
   border-bottom: 0.5px solid #b98389;
   padding: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.date {
+  color: lightgray;
+  font-size: 0.75rem;
+}
+
+.gray {
+  background-color: lightgray;
 }
 
 #form {
@@ -92,4 +127,9 @@
   width: 800px;
   font-size: 2rem;
   margin-left: 210px;
+}
+
+#channelForm form input[type=text] {
+  margin: 10px;
+  padding: 5px;
 }

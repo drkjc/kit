@@ -10,7 +10,7 @@ class Message {
   }
 
   renderMessage() {
-    return `<span class="message">${this.username} ${this.created_at.slice(5, 10).replace("-", "/")}<br><br>${this.content}</span><br>`
+    return `<div class="message"><span class="user-name">${this.username}</span> <span class="date">${this.created_at.slice(5, 10).replace("-", "/")}</span><br><br><span class="content">${this.content}</span></div><br>`
   }
 }
 
@@ -136,6 +136,7 @@ function createMessage(event) {
   
     document.getElementById('showMessages').innerHTML += `<span>${message.content}</span><br>`
     let m = document.getElementById('showMessages').lastChild.previousSibling.classList.add("message");
+    debugger;
 
     messageView.scrollTop = messageView.scrollHeight;
   })

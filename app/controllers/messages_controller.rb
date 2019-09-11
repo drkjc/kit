@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
             message = Message.new(content: params[:message][:content])
             message.room = room
             message.user = @user
+            message.username = @user.name
             message.save
             render json: message, status: 201
         else
