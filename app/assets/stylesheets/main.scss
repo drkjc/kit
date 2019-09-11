@@ -133,3 +133,53 @@
   margin: 10px;
   padding: 5px;
 }
+
+#search-page {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.home-link a {
+  font-size: 4rem;
+  text-decoration: none;
+  background: #b98389;
+  color: white;
+  padding: 1rem;
+  border-radius: 5%;
+}
+
+.home-link a:hover {
+  font-weight: bold;
+}
+
+
+#search-page input[type=text] {
+  width: 50%;
+  padding: 2rem;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+#usersList {
+  list-style-type: none;
+  width: 50%;
+  margin-left: 25rem;
+  padding: 1rem;
+}
+
+#usersList li {
+  text-decoration: none;
+  font-size: 3rem;
+  background-color: lightgray;
+  border: 1px solid;
+  padding-top: 1rem;
+}
+
+#usersList li:hover {
+  font-weight: bold;
+}
+
+#usersList li a {
+  text-decoration: none;
+  color: black;
+}

@@ -30,13 +30,13 @@
             <li><%= link_to room.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "channels" } %></li><br>
           <% end %>
         <% end %>
-      </ul><hr>
+      </ul>
 
       <%= link_to "Direct Message  +", search_path, class: 'nav-links' %><br>
 
       <ul id="contacts">
-        <% @user.rooms.each do |room| %>
-          <% room.users.each do |user| %>
+        <% @user.rooms.each.uniq do |room| %>
+          <% room.users.each.uniq do |user| %>
             <% if user.name != @user.name %>
               <li><%= link_to user.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%></li><br>
             <% end %>
