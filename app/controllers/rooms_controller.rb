@@ -11,7 +11,6 @@ class RoomsController < ApplicationController
     end 
 
     def create
-      binding.pry
       if params[:user_name] 
         contact = User.find_by(name: params[:user_name])
         room = Room.all.find do |room|

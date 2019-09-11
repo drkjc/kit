@@ -48,7 +48,7 @@ function createChannel() {
     }})
     .then(response => response.json())
     .then(channel => {
-      document.getElementById("channels").innerHTML += `<a href='#' onclick='showMessages(event);' data-id='${channel.name}' data-class='channels'>${channel.name}<a>`;
+      document.getElementById("channels").innerHTML += `<li><a href='#' onclick='showMessages(event);' data-id='${channel.name}' data-class='channels'>${channel.name}</a>                <a class='delete' href='#' onclick='delete(event);'>x</a></li>`;
   });
   let channelFormDiv = document.getElementById('channelForm');
   channelFormDiv.innerHTML = '';
@@ -72,6 +72,7 @@ function createMessageForm(id) {
 
   messageForm.innerHTML = html; 
 }
+
 
 
 function showMessages(event) {
@@ -136,10 +137,13 @@ function createMessage(event) {
   
     document.getElementById('showMessages').innerHTML += `<span>${message.content}</span><br>`
     let m = document.getElementById('showMessages').lastChild.previousSibling.classList.add("message");
-    debugger;
 
     messageView.scrollTop = messageView.scrollHeight;
   })
   document.getElementById('text').value = " ";
+}
+
+function deleteRoom(event) {
+  debugger;
 }
 

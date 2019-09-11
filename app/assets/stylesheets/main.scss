@@ -28,12 +28,12 @@
   font-weight: bold;
 }
 
-#channels li a:hover,
-#contacts li a:hover {
-  background-color: white;
-  margin-left: 0;
-  padding: 10px 50px 10px 10px;
-}
+// #channels li a:hover,
+// #contacts li a:hover {
+//   background-color: white;
+//   margin-left: 0;
+//   padding: 10px 50px 10px 10px;
+// }
 
 .nav-links {
   text-decoration: none;
@@ -72,14 +72,33 @@
 
 #channels li,
 #contacts li {
+  display: flex;
+  justify-content: space-between;
   list-style-type: none;
+  padding: 2px;
 }
+
+#channels li:hover,
+#contacts li:hover {
+  background: white;  
+  font-weight: bold;
+}
+
+#channels li:hover .deleteButton {
+  display: block;
+}
+
 
 #channels a, 
 #contacts a {
   text-decoration: none;
   font-family: 'Work Sans', sans-serif;
   color: #b98389;
+  padding: 1px;
+}
+
+.deleteButton {
+  display: none;
 }
 
 #showMessages, #settings {
@@ -130,8 +149,9 @@
 }
 
 #channelForm form input[type=text] {
-  margin: 10px;
+  margin: 29px;
   padding: 5px;
+  width: 75%;
 }
 
 #search-page {
