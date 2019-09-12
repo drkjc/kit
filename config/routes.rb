@@ -8,21 +8,13 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#create'
 
-  resources :messages
+  resources :messages, only: [:show, :create]
   
-  #get '/channels', to: 'rooms#index'
 
   resources :rooms
   resources :users
   get '/home', to: 'users#index'
   get '/search', to: 'users#search' 
 
-  # resources :rooms do 
-  #   resources :messages    
-  # end
-
-  # resources :users do
-  #   resources :rooms 
-  # end
 
 end

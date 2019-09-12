@@ -156,13 +156,11 @@ function deleteRoom(event) {
     }
   })
   console.log(document.querySelector(`[data-id='${id}']`));
-  room = document.querySelector(`[data-id='${id}']`);
-  if (room.attributes[2].nodeValue = 'contacts') {
-    room.parentNode.removeChild(room.parentNode.childNodes[1]);
-    room.parentNode.removeChild(room);
-  } else {
-    room.parentNode.removeChild(room.parentNode.childNodes[2]);
-    room.parentNode.removeChild(room)
-  };
+  room = document.querySelector(`[data-id='${id}']`)
+  ;
+  let parent = room.parentNode;
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
 

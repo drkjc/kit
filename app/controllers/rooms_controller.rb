@@ -29,14 +29,14 @@ class RoomsController < ApplicationController
           redirect_to home_path
         end 
       else 
-        room = Room.find_by(name: params[:channel][:name])
+        room_name = params[:channel][:name].split.join('-')
+        room = Room.find_by(name: room_name)
         if room 
           @user.rooms << room 
           @user.save
           render json: room, status: 201
         else
-          room = Room.new(name: params[:channel][:name])
-          room.name = room.name.split.join('-')
+          room = Room.new(name: room_name)
           @user.rooms << room
           room.save
           if @user.save 
@@ -49,7 +49,7 @@ class RoomsController < ApplicationController
     end 
 
     def show 
-      room = Room.friendly.find_by(name: params[:id])
+      room = Room.find_by(name: params[:id])
       render json: room, status: 201
     end 
 

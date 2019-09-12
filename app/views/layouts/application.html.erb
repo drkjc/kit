@@ -37,7 +37,7 @@
       <ul id="contacts">
         <% @user.rooms.each.uniq do |room| %>
           <% room.users.each.uniq do |user| %>
-            <% if user.name != @user.name %>
+            <% if user.name != @user.name && room.name.include?('kit') %>
               <li><%= link_to user.name, '#', :onclick => 'showMessages(event);', :data => { :id => "#{room.name}", :class => "contacts" }%><%= link_to 'x', '#', :onclick => 'deleteRoom(event);', :data => { :id => "#{room.name}", :class => "contacts"}, :class => 'deleteButton' %></li>
             <% end %>
           <% end %>
