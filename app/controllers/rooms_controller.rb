@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController 
     before_action :find_user 
-    skip_before_action :verify_authenticity_token#, except: [:show]
+    skip_before_action :verify_authenticity_token
     
     def index
       @rooms = Room.all
@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
         room = Room.all.find do |room|
           contact.rooms.include?(room) && @user.rooms.include?(room)
         end
-        if !room.nil?
+        if !room.nil? && room.name.include?('kit')
           redirect_to home_path
         else 
           room_name = 'kit' + SecureRandom.alphanumeric
@@ -54,7 +54,6 @@ class RoomsController < ApplicationController
     end 
 
     def edit 
-
     end 
 
     def destroy 
