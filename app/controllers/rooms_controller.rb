@@ -29,20 +29,28 @@ class RoomsController < ApplicationController
           redirect_to home_path
         end 
       else 
-        room_name = params[:channel][:name].split.join('-')
-        room = Room.find_by(name: room_name)
-        if room 
-          @user.rooms << room 
+        if params[:channel_name] 
+          room_name = create_room_name(params[:channel_name])
+          room = Room.find_by(name: room_name)
+          @user.rooms << room unless @user.rooms.include?(room)
           @user.save
-          render json: room, status: 201
-        else
-          room = Room.new(name: room_name)
-          @user.rooms << room
-          room.save
-          if @user.save 
+          redirect_to home_path 
+        elsif params[:channel][:name]
+          room_name = create_room_name(params[:channel][:name])
+          room = Room.find_by(name: room_name)
+          if room 
+            @user.rooms << room unless @user.rooms.include?(room)
+            @user.save
             render json: room, status: 201
-          else 
-            render json: room, status: :bad_request
+          else
+            room = Room.new(name: room_name)
+            @user.rooms << room
+            room.save
+            if @user.save 
+              render json: room, status: 201
+            else 
+              render json: room, status: :bad_request
+            end
           end
         end
       end
@@ -70,6 +78,10 @@ class RoomsController < ApplicationController
     end
 
     private 
+
+    def create_room_name(params) 
+      params.split.join('-')
+    end
 
     def room_params 
         params.require(:room).permit(:name)
