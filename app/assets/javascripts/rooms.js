@@ -156,8 +156,7 @@ function deleteRoom(event) {
     }
   })
   console.log(document.querySelector(`[data-id='${id}']`));
-  room = document.querySelector(`[data-id='${id}']`)
-  ;
+  room = document.querySelector(`[data-id='${id}']`);
   let parent = room.parentNode;
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
