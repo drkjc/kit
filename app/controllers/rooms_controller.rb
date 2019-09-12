@@ -62,7 +62,6 @@ class RoomsController < ApplicationController
         room = Room.find_by(name: params[:id])
         if @user.rooms.include?(room)
           @user.rooms.delete(room)
-          binding.pry
           redirect_to home_path 
         end  
       else 

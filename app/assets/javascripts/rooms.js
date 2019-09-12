@@ -48,7 +48,7 @@ function createChannel() {
     }})
     .then(response => response.json())
     .then(channel => {
-      document.getElementById("channels").innerHTML += `<li><a href='#' onclick='showMessages(event);' data-id='${channel.name}' data-class='channels'>${channel.name}</a>                <a class='delete' href='#' onclick='delete(event);'>x</a></li>`;
+      document.getElementById("channels").innerHTML += `<li><a href='#' onclick='showMessages(event);' data-id='${channel.name}' data-class='channels'>${channel.name}</a><a class="deleteButton" onclick="deleteRoom(event);" data-id="${channel.name}" data-class="channels" href="#">x</a></li>`;
   });
   let channelFormDiv = document.getElementById('channelForm');
   channelFormDiv.innerHTML = '';
@@ -145,7 +145,7 @@ function createMessage(event) {
 
 function deleteRoom(event) {
 
-  let id;
+  let id, room;
   event.preventDefault();
   id = getEvent(event);
   fetch('/rooms/' + id, {
@@ -155,5 +155,14 @@ function deleteRoom(event) {
       'Accept': 'application/json'
     }
   })
+  console.log(document.querySelector(`[data-id='${id}']`));
+  room = document.querySelector(`[data-id='${id}']`);
+  if (room.attributes[2].nodeValue = 'contacts') {
+    room.parentNode.removeChild(room.parentNode.childNodes[1]);
+    room.parentNode.removeChild(room);
+  } else {
+    room.parentNode.removeChild(room.parentNode.childNodes[2]);
+    room.parentNode.removeChild(room)
+  };
 }
 
