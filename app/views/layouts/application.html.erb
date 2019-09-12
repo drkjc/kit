@@ -21,8 +21,8 @@
       </div>
 
       <div id="channelLinks">
-        <%= link_to "Channels", '#', :onclick => 'showChannelForm(event);', class: 'nav-links' %><%= link_to "+", search_path(query: 'channels'), class: 'nav-links' %> 
-      </div><br>
+        <%= link_to "Channels", search_path(query: 'channels'), class: 'nav-links' %><%= link_to "+", '#', :onclick => 'showChannelForm(event);', class: 'nav-links' %> 
+      </div>
 
       <div id="channelForm"></div>
 
@@ -34,7 +34,9 @@
         <% end %>
       </ul>
 
-      <%= link_to "Direct Message  +", search_path(query: 'direct'), class: 'nav-links' %><br>
+      <div id="dmLinks">
+        <%= link_to "Direct Message", search_path(query: 'direct'), class: 'nav-links' %> <%= link_to '+', search_path(query: 'direct'), class: 'nav-links' %>
+      </div>
 
       <ul id="contacts">
         <% @user.rooms.each.uniq do |room| %>

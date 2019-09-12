@@ -47,7 +47,8 @@
   height: 100vh;
 }
 
-#channelLinks {
+#channelLinks,
+#dmLinks {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -177,7 +178,8 @@
 #usersList {
   list-style-type: none;
   width: 50%;
-  margin-left: 25rem;
+  margin-left: 18rem;
+  margin-right: 16rem;
   padding: 1rem;
 }
 
