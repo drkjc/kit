@@ -4,10 +4,17 @@
   <%= text_field_tag :search, nil, placeholder: 'search...', onkeyup: 'filterUsers();' %>
 
   <ul id="usersList">
-    <% User.all.each do |u| %>
-      <li><%= link_to u.name, rooms_path(user_name: u.name), method: :post %></li>
+    <% if !@users.nil? %>
+      <% @users.each do |u| %>
+        <li><%= link_to u.name, rooms_path(user_name: u.name), method: :post %></li>
+      <% end %>
+    <% else !@channels.nil? %>
+      <% @channels.compact.each do |ch| %>
+        <li><%= link_to ch.name, rooms_path(channel_name: ch.name), method: :post  %></li>
+      <% end %> 
     <% end %>
   </ul> 
+
 </div>
 
   

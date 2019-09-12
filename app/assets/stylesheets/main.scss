@@ -47,6 +47,16 @@
   height: 100vh;
 }
 
+#channelLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#channelLinks:nth-child(2) {
+  padding-right: 40px;
+}
+
 #channels,
 #contacts {
   left: 0;

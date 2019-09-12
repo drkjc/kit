@@ -31,12 +31,19 @@ class UsersController < ApplicationController
     end
 
     def search
-      render layout: 'login' 
-      @users = User.all
+      if params[:query] === 'direct'
+        @users = User.all
+        render layout: 'login' 
+      elsif params[:query] === 'channels'
+        @channels = Room.all.map do |room| 
+          room if !room.name.include?('kit')
+        end
+        @channels
+        render layout: 'login'
+      end
     end
 
     def settings
-      #binding.pry 
       render json: @user, status: 201
     end
 
