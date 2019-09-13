@@ -31,7 +31,7 @@ class RoomsController < ApplicationController
       else 
         if params[:channel_name] 
           room_name = create_room_name(params[:channel_name])
-          room = Room.find_by(name: room_name)
+          room = Room.find_by(slug: room_name)
           @user.rooms << room unless @user.rooms.include?(room)
           @user.save
           redirect_to home_path 

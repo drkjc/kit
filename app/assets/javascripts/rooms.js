@@ -2,9 +2,7 @@ class Message {
 
   constructor(message) {
     this.id = message.id 
-    this.content = message.content
-    this.room_id = message.room_id 
-    this.user_id = message.user_id
+    this.content = message.content 
     this.created_at = message.created_at
     this.username = message.username
   }

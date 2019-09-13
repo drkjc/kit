@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  
     def find_user 
         @user ||= User.find(session[:user_id])
     end
