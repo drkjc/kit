@@ -12,6 +12,20 @@ class Message {
   }
 }
 
+class sortMessage {
+
+  constructor(message) {
+    //this.id = message.id
+    this.content = message.content
+    //this.created_at = message.created_at
+    this.username = message.username
+  }
+
+  renderMessage() {
+    return `<div class="message"><span class="user-name">${this.username}</span> <span class="date"></span><br><br><span class="content">${this.content}</span></div><br>`
+  }
+}
+
 function clearSettings() {
   let settingsDiv;
 
@@ -160,4 +174,34 @@ function deleteRoom(event) {
     parent.removeChild(parent.firstChild);
   }
 }
+
+function sortMessages(event) {
+  event.preventDefault();
+  let messages, messageDiv;
+  
+  messageDiv = document.querySelector('#showMessages');
+  messages = messageDiv.querySelectorAll('.message');
+  messageDiv.innerHTML = ''
+
+  let messagesArray = Array.from(messages);
+  let sortedArray = messagesArray.sort((a, b) => {
+    
+    var nameA = a.children[0].innerText.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.children[0].innerText.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    // names must be equal
+    return 0;
+  });
+
+  for (var i = 0; i < sortedArray.length; i++) {
+    messageDiv.appendChild(sortedArray[i]);
+  }
+
+ }
 
