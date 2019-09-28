@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/home', to: 'users#index'
   get '/signup', to: 'users#new'
   get '/search', to: 'users#search' 
-  get '/settings', to: 'users#settings'
+  get '/settings', to: 'users#show'
 
 
 end

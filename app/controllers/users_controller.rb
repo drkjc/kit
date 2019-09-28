@@ -30,6 +30,10 @@ class UsersController < ApplicationController
       end
     end
 
+    def show 
+      render json: @user, status: 201
+    end
+
     def search
       if params[:query] === 'direct'
         @users = User.all
@@ -41,10 +45,6 @@ class UsersController < ApplicationController
         @channels
         render layout: 'login'
       end
-    end
-
-    def settings
-      render json: @user, status: 201
     end
 
 

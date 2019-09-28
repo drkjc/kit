@@ -26,13 +26,14 @@ function filterUsers() {
 }
 
 function showSettings(event) {
-  let settingsDiv;
+  let settingsDiv, userID;
   event.preventDefault(); 
   clearMessages();
 
   settingsDiv = document.querySelector('#settings');
-
-  fetch('/settings', {
+  userID = parseInt(document.querySelector('h1').dataset.id);
+  
+  fetch(`/users/${userID}`, {
     method: 'GET',
     headers: {
     'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ function clearSettings() {
   let settingsDiv;
 
   settingsDiv = document.querySelector('#settings').innerHTML = "";
-  document.querySelector('#info-bar').lastChild.innerHTML = "";
+  document.querySelector('#info-bar').firstChild.innerHTML = "";
 }
 
 

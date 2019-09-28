@@ -13,7 +13,7 @@
 
     <div id="nav-bar">
 
-      <h1 id="username"><%= @user.name.capitalize %></h1>
+      <h1 id="username" data-id="<%= @user.id %>"><%= @user.name.capitalize %></h1>
 
       <div id="nav-links">
         <%= link_to 'settings', '#', :onclick => 'showSettings(event);' %><br>
