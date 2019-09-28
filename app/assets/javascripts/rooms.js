@@ -93,7 +93,7 @@ function showMessages(event) {
   clearSettings();
 
   roomName = event.currentTarget.innerHTML;
-  document.querySelector('#info-bar').innerHTML += `<h2 id="room-name">${roomName}</h2>`;
+  document.querySelector('#info-bar').insertAdjacentHTML('afterbegin', `<h2 id="room-name">${roomName}</h2>`);
 
   messageView = document.getElementById('showMessages');
   id = getEvent(event);
