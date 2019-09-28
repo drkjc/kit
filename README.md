@@ -1,24 +1,33 @@
-# README
+# K.I.T
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Keep In Touch! KIT is simple, users can send messages in public groups or privately to other users.
 
-Things you may want to cover:
+## Getting Started 
 
-* Ruby version
+Clone the project and start the server to get up and running.
 
-* System dependencies
+```
+rails s
+```
 
-* Configuration
+## Built With
 
-* Database creation
+Rails 5.2.3
 
-* Database initialization
+## Contributing 
 
-* How to run the test suite
+Not accepting contributions at this time.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Authors 
 
-* Deployment instructions
+* **Derek Cerretani** - [drkjc](https://github.com/drkjc)
 
-* ...
+## License 
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgements 
+  
+*  Initally created for Flatiron School Rails/Javascript Portfolio Project 
+
+
