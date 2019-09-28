@@ -30,7 +30,7 @@ function clearSettings() {
   let settingsDiv;
 
   settingsDiv = document.querySelector('#settings').innerHTML = "";
-  document.querySelector('#info-bar').firstChild.innerHTML = "";
+  document.querySelector('#info-bar').innerHTML = "";
 }
 
 
@@ -93,7 +93,7 @@ function showMessages(event) {
   clearSettings();
 
   roomName = event.currentTarget.innerHTML;
-  document.querySelector('#info-bar').insertAdjacentHTML('afterbegin', `<h2 id="room-name">${roomName}</h2>`);
+  document.querySelector('#info-bar').insertAdjacentHTML('afterbegin', `<h2 id="room-name">${roomName}</h2><button id="sortButton" onclick="sortMessages(event)">sort</button>`);
 
   messageView = document.getElementById('showMessages');
   id = getEvent(event);

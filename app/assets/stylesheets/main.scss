@@ -3,6 +3,24 @@
   height: 80px;
   margin-left: 310px;
   background-color: white;
+  display: flex;
+}
+
+#info-bar button {
+  height: 30px;
+  width: 3.5rem;
+  background-color: #edeef0;
+  margin: 28px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+#info-bar button:hover {
+  background-color: #b98389;
+  color: white;
 }
 
 #username {
