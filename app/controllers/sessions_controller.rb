@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to home_path 
       else 
-        redirect_to signup_path
+        redirect_to root_path
       end
     else 
       @user = User.find_by(name: params[:user][:name])
@@ -24,7 +24,8 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to home_path
       else 
-        redirect_to signup_path
+        flash[:error] = 'Username, email, or password incorrect. Please try again.'
+        redirect_to root_path
       end
     end
   end

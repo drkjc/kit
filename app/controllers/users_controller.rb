@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       if user.save 
         redirect_to home_path
       else 
-        flash[:error] = "Please Try Again."
+        flash[:error] = "Something went wrong. Please Try Again."
         redirect_to signup_path 
       end
     end

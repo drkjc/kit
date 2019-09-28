@@ -8,4 +8,5 @@
   <%= form_for @user, :url => { :action => "create"} do |form| %>
     <%= render partial: 'access_form', local: { f: form } %>
   <% end %><br>
+  <span class="accessLink"><%= link_to 'Back to login', '/' %></span><br><br>
 <% end %>
