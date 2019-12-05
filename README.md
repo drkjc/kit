@@ -2,6 +2,8 @@
 
 Keep In Touch! KIT is simple, users can send messages in public groups or privately to other users.
 
+[Video Walkthrough](https://www.youtube.com/watch?v=wUWpgFARa8o&feature=youtu.be)
+
 ## Getting Started 
 
 Clone the project and start the server to get up and running.
